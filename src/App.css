@@ -1,0 +1,171 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html{
+  background-color: rgb(179, 210, 186);
+}
+
+.app{
+  margin: 0 20px;
+}
+
+.title{
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+/* Formulario */
+.contenedor-formulario{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 40px 25px;
+}
+
+.contenedor-input{
+  width: 80%;
+  display: flex;
+}
+
+.contenedor-input .boton{
+  width: 20%;
+  height: 50px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 25px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 300ms;
+  margin-left: 10px;
+}
+
+.input{
+  width: 100%;
+  line-height: 50px;
+  border-radius: 25px;
+  text-align: center;
+  font-size: 30px;
+}
+
+
+/* Tendencias */
+.titulo{
+  font-size: 30px;
+  font-weight: bold;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.contenedor-tendencia{
+  overflow-x: scroll;
+  overflow-y: hidden;
+  display: flex;
+  gap: 50px;
+  width: 100%;
+  height: 90%;
+  margin: 20px 0 0 10px;
+  padding: 10px 5px;
+  border-radius: 10px;
+}
+
+.contenedor-tendencia-tarjeta{
+  height: 220px;
+  width: 180px;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: all 300ms;
+  position: relative; 
+  margin: 0 0 70px 0;
+}
+
+.imagen-tendencia{
+  height: 220px;
+  width: 180px;
+}
+
+.titulo-tendencia{
+  text-align: center;
+  font-weight: 500;
+  margin: 10px 0;
+  color: #000;
+
+}
+
+.contenedor-tendencia::-webkit-scrollbar{
+  width: 10px;
+  height: 10px;   
+}
+
+.contenedor-tendencia::-webkit-scrollbar-thumb{
+  background: rgb(168, 167, 167);
+  border-radius: 3px;
+  height: 5px;
+}
+
+/* Categorías */
+.subtitulo{
+  font-size: 30px;
+  font-weight: bold;
+  margin: 30px 0;
+}
+
+.contenedor-categoria{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+.categoria-card{
+  background-color: yellow;
+  margin: 10px 20px;
+  cursor: pointer;
+  border: black 1px solid;
+  border-radius: 10px;
+}
+
+.categoria-titulo{
+  padding: 5px 40px;
+}
+
+.contenedor-peliculas{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.contenedor-pelicula{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  gap: 20px;
+}
+
+.pelicula-imagen{
+  width: 100%;
+  height: 450px; 
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pelicula-titulo{
+  font-size: 25px;
+  text-align: center;
+  color: #000;
+}
