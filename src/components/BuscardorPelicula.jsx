@@ -1,6 +1,30 @@
+import { FcSearch } from 'react-icons/fc'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+
 const BuscardorPelicula = () => {
+  const [search, setSearch] = useState('')
+  const history = useNavigate()
+  
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if(search === '') return
+    history(`/contenedorpelicula/${search}`)
+  }
+
+  const handleChange = (e) => {
+    const value = e.target.value
+    setSearch(value)
+    console.log(value)
+  }
+
   return (
-    <div>BuscardorPelicula</div>
+    <div className='contenedor-formulario'>
+      <form className='contenedor-input' onSubmit={handleSubmit}>
+        <input className='input' value={search} onChange={handleChange} type="text"  />
+        <button className='boton'><FcSearch className='search'/></button>
+      </form>
+    </div>
   )
 }
 

@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  text-decoration: none;
 }
 
 html{
@@ -28,13 +29,18 @@ html{
   margin: 40px 25px;
 }
 
+.search{
+  width: 100%;
+  height: 40px;
+}
+
 .contenedor-input{
   width: 80%;
   display: flex;
 }
 
 .contenedor-input .boton{
-  width: 20%;
+  width: 15%;
   height: 50px;
   background-color: #000;
   color: #fff;
@@ -133,6 +139,7 @@ html{
 
 .categoria-titulo{
   padding: 5px 40px;
+  color: black;
 }
 
 .contenedor-peliculas{
@@ -169,3 +176,33 @@ html{
   text-align: center;
   color: #000;
 }
+
+/* Página Detalle */
+/*
+.contenedor-pelicula-detalle{
+  
+}
+
+.titulo-detalle{
+}
+
+.datos-detalle{
+  display: flex;
+}
+
+.imagen-detalle{
+
+}
+
+.caracteristicas-detalle{
+
+}
+
+.descripcion-detalle{
+
+}
+
+
+.generos-detalle{
+
+}*/

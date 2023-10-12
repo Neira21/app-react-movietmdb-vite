@@ -1,19 +1,34 @@
-import { Link } from "react-router-dom"
+/* eslint-disable react-hooks/exhaustive-deps */
+import { Link, useParams } from "react-router-dom"
 import ContenedorPeliculas from "../components/ContenedorPeliculas"
 import { useEffect } from "react"
-import {getMoviesByFetch} from '../GetMovies'
+import {getMovieBySearch, getMovieByGenre} from '../GetMovies'
 import { useState } from "react"
+import BuscardorPelicula from "../components/BuscardorPelicula"
+import Spinner from "../components/Spinner"
 
 const ContenedorPelicula = () => {
   const [movies, setMovies] = useState([])
+  const { search, generoname } = useParams()
+  const [loading , setLoading] = useState(true)
+  
   const getMovies = async () => {
-    const data = await getMoviesByFetch('/discover/movie')
-    setMovies(data)
+    if(search === undefined){
+      setLoading(true)
+      const data = await getMovieByGenre(generoname)
+      setMovies(data)
+      setLoading(false)
+    }else if(generoname === undefined){
+      setLoading(true)
+      const data = await getMovieBySearch(search)
+      setMovies(data)
+      setLoading(false)
+    }
   }
 
   useEffect(()=>{
     getMovies()
-  },[])
+  },[search])
   
   return (
     <>
@@ -21,10 +36,12 @@ const ContenedorPelicula = () => {
           <h1>Películas TMBD 👽👽👽</h1>
           <div>
             <Link to={'/'} >Inicio</Link>
-            <Link to={'/pelicula/:id'} > Detalle de Pelicula</Link>
           </div>
-        </div>
-      <ContenedorPeliculas movies={movies}/>
+      </div>
+      <BuscardorPelicula />
+      {loading ? <Spinner />
+      :<ContenedorPeliculas movies={movies}/> }
+      
    </>
   )
 }

@@ -9,3 +9,27 @@ export async function getMoviesByFetch(url){
   
   return data.results
 }
+
+export async function getMovieById(id){
+  const response = await fetch(`${API_URL}/movie/${id}?api_key=${API_KEY}`)
+  const data = await response.json()
+  return data
+}
+
+export async function getTvById(id){
+  const response = await fetch(`${API_URL}/tv/${id}?api_key=${API_KEY}`)
+  const data = await response.json()
+  return data
+}
+
+export async function getMovieBySearch(query){
+  const response = await fetch(`${API_URL}/search/movie?api_key=${API_KEY}&query=${query}`)
+  const data = await response.json()
+  return data.results
+}
+
+export async function getMovieByGenre(genre){
+  const response = await fetch(`${API_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genre}`)
+  const data = await response.json()
+  return data.results
+}

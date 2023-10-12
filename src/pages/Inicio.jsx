@@ -3,6 +3,9 @@ import '../App.css'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import {getMoviesByFetch} from '../GetMovies'
+import { BiCameraMovie } from 'react-icons/bi'
+import BuscardorPelicula from '../components/BuscardorPelicula'
+import Spinner from '../components/Spinner'
 
 const API_URL = "https://api.themoviedb.org/3"
 const API_KEY = "786ee52ce60c9ebb3805127db53d7f67"
@@ -10,7 +13,7 @@ const IMG_URL = "https://image.tmdb.org/t/p/w500/"
 
 const Inicio = () => {
   
-  const [search, setSearch] = useState('')
+  //const [search, setSearch] = useState('')
   const [movieTrending, setMovieTrending] = useState([])
   const [tvTrending, setTvTrending] = useState([])
   const [movieCategory, setMovieCategory] = useState([])
@@ -49,33 +52,29 @@ const Inicio = () => {
     <>
       <div className='app'>
         <div className='title'>
-          <h1>Películas TMBD 👽👽👽</h1>
+          <h1>Películas TMBD  <BiCameraMovie/> <BiCameraMovie/> <BiCameraMovie/></h1>
           <div>
             <Link to={'/contenedorpelicula'} >Contenedor Pelicula</Link>
-            <Link to={'/pelicula/:id'} > Detalle de Pelicula</Link>
           </div>
         </div>
-      
+        
+        <Spinner size={100} />
 
-      <div className='contenedor-formulario'>
-          <form className='contenedor-input'>
-            <input className='input' type="text"  />
-            <button className='boton'>Buscar</button>
-          </form>
-        </div>
+        <BuscardorPelicula />
         
         <div className='titulo'>
             Películas en tendencia
         </div>
         <div className='contenedor-tendencia'>
           {movieTrending.map((movie) => (
-            <div className='contenedor-tendencia-tarjeta' key={movie.id}>
-              <img className='imagen-tendencia' src={`${IMG_URL}${movie.poster_path}`} alt={movie.title} />
-              <h3 className='titulo-tendencia'>
-                {movie.title}
-              </h3>
-            </div>
-            
+            <Link to={`/pelicula/${movie.id}`} key={movie.id}  >
+              <div className='contenedor-tendencia-tarjeta' key={movie.id}>
+                  <img className='imagen-tendencia' src={`${IMG_URL}${movie.poster_path}`} alt={movie.title} />
+                  <h3 className='titulo-tendencia'>
+                    {movie.title}
+                  </h3>
+              </div>
+            </Link>
           ))}
         </div>
 
@@ -84,12 +83,14 @@ const Inicio = () => {
         </div>
         <div className='contenedor-tendencia'>
           {tvTrending.map((tv) => (
-            <div className='contenedor-tendencia-tarjeta' key={tv.id}>
-              <img className='imagen-tendencia' src={`${IMG_URL}${tv.poster_path}`} alt={tv.title} />
-              <h3 className='titulo-tendencia'>
-                {tv.name}
-              </h3>
-            </div>
+            <Link to={`/tv/${tv.id}`} key={tv.id}  >
+              <div className='contenedor-tendencia-tarjeta' key={tv.id}>
+                <img className='imagen-tendencia' src={`${IMG_URL}${tv.poster_path}`} alt={tv.title} />
+                <h3 className='titulo-tendencia'>
+                  {tv.name}
+                </h3>
+              </div>
+            </Link>
           ))}
         </div>
 
@@ -99,9 +100,11 @@ const Inicio = () => {
 
         <div className='contenedor-categoria'>
           {movieCategory.map((category) => (
-            <div className='categoria-card' key={category.id}>
-              <h3 className='categoria-titulo'>{category.name}</h3>
-            </div>
+            <Link key={category.id} to={`/genero/${category.name}`}>
+              <div className='categoria-card' key={category.id}>
+                <h3 className='categoria-titulo'>{category.name}</h3>
+              </div>
+            </Link>
           ))}
         </div>
       </div>
