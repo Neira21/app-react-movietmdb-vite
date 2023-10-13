@@ -12,7 +12,7 @@ const ContenedorPeliculas = ({movies}) => {
       }).isRequired,
     ).isRequired,
   };
-  console.log(movies)
+  
   return (
     <div className='contenedor-peliculas'>
         {movies.map((movie) => (

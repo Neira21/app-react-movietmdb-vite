@@ -1,13 +1,17 @@
 const API_URL = "https://api.themoviedb.org/3"
 const API_KEY = "786ee52ce60c9ebb3805127db53d7f67"
 
-export async function getMoviesByFetch(url){
+export async function getMoviesOrTvByFetch(url){
   const response = await fetch(`${API_URL}${url}?api_key=${API_KEY}`)
-  console.log("--------------------")
-  console.log(`${API_URL}${url}&api_key=${API_KEY}`)
   const data = await response.json()
   
   return data.results
+}
+
+export async function getCategories(url){
+  const response = await fetch(`${API_URL}${url}?api_key=${API_KEY}`)
+  const data = await response.json()
+  return data.genres
 }
 
 export async function getMovieById(id){
@@ -29,7 +33,14 @@ export async function getMovieBySearch(query){
 }
 
 export async function getMovieByGenre(genre){
-  const response = await fetch(`${API_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genre}`)
-  const data = await response.json()
-  return data.results
+  //Obtener id de genero
+  const response = await getCategories('/genre/movie/list')
+  
+  const genreId = response.find(g => g.name === genre).id
+  console.log(genreId)
+  //Obtener peliculas por id de genero
+  const response2 = await fetch(`${API_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genreId}`)
+  const data2 = await response2.json()
+  console.log(data2)
+  return data2.results
 }

@@ -10,6 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Inicio />} />
         <Route path="/contenedorpelicula/:search"  element={<ContenedorPelicula />} />
+        <Route path="/contenedorpelicula"  element={<ContenedorPelicula />} />
         <Route path="/genero/:generoname"  element={<ContenedorPelicula />} />
         <Route path="/pelicula/:id" element={<DetallePelicula />} />
         <Route path="/tv/:id" element={<DetalleTv />} />

@@ -38,29 +38,37 @@ const DetallePelicula = () => {
         </div>
         <div className='datos-detalle'>
           <div className='imagen-detalle'>
-            <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
+            <img width={400} height={500} src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
           </div>
           <div className='caracteristicas-detalle'>
-            <table>
+            <table className='tabla-datos'>
               <thead>
                 <tr>
-                  <td>Estado de la película</td>
-                  <td>Fecha de estreno</td>
-                  <td>Popularidad</td>
-                  <td>Voto Promedio</td>
-                  <td>Total de votaciones</td>
-                </tr>
-                
-              </thead>
-              <tbody>
-                <tr>
+                  <td><p>Estado de la Película/Serie: </p> </td>
                   <td>{movie.status}</td>
+                </tr>
+                <tr>
+                  <td><p>Fecha de estreno: </p></td>
                   <td>{movie.release_date}</td>
+                </tr>
+                <tr>
+                  <td><p>Popularidad:</p> </td>
                   <td>{movie.popularity}</td>
+                </tr>
+                <tr>
+                  <td><p>Voto Promedio </p></td>
                   <td>{movie.vote_average}</td>
+                </tr>
+                <tr>
+                  <td><p>Total de votaciones </p> </td>
                   <td>{movie.vote_count}</td>
                 </tr>
-              </tbody>
+              </thead>
+               
+    
+              
+                
+              
               
             </table>
           </div>

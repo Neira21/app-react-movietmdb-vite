@@ -2,13 +2,10 @@ import { useState } from 'react'
 import '../App.css'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import {getMoviesByFetch} from '../GetMovies'
+import {getMoviesOrTvByFetch, getCategories} from '../GetMovies'
 import { BiCameraMovie } from 'react-icons/bi'
 import BuscardorPelicula from '../components/BuscardorPelicula'
-import Spinner from '../components/Spinner'
 
-const API_URL = "https://api.themoviedb.org/3"
-const API_KEY = "786ee52ce60c9ebb3805127db53d7f67"
 const IMG_URL = "https://image.tmdb.org/t/p/w500/"
 
 const Inicio = () => {
@@ -18,23 +15,19 @@ const Inicio = () => {
   const [tvTrending, setTvTrending] = useState([])
   const [movieCategory, setMovieCategory] = useState([])
 
-  
-
   const getTrendingMovies = async () => {
-    const data = await getMoviesByFetch('/trending/movie/day')
+    const data = await getMoviesOrTvByFetch('/trending/movie/day')
     setMovieTrending(data)
   }
 
   const getTrendingTv = async () => {
-    const response = await fetch(`${API_URL}/trending/tv/day?api_key=${API_KEY}&language=es-ES&page=1`)
-    const data = await response.json()
-    setTvTrending(data.results)
+    const data = await getMoviesOrTvByFetch('/trending/tv/day')
+    setTvTrending(data)
   }
 
   const getMovieCategory = async () => {
-    const response = await fetch(`${API_URL}/genre/movie/list?api_key=${API_KEY}&language=es-ES&page=1`)
-    const data = await response.json()
-    setMovieCategory(data.genres)
+    const data = await getCategories('/genre/movie/list')
+    setMovieCategory(data)
   }
 
   // const getTvCategory = async () => {
@@ -54,14 +47,10 @@ const Inicio = () => {
         <div className='title'>
           <h1>Películas TMBD  <BiCameraMovie/> <BiCameraMovie/> <BiCameraMovie/></h1>
           <div>
-            <Link to={'/contenedorpelicula'} >Contenedor Pelicula</Link>
+            <Link to={'/contenedorpelicula'} >Ver Peliculas Populares</Link>
           </div>
         </div>
-        
-        <Spinner size={100} />
-
         <BuscardorPelicula />
-        
         <div className='titulo'>
             Películas en tendencia
         </div>
