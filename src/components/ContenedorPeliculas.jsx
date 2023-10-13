@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import Pelicula from "./Pelicula"
 import PropTypes from 'prop-types'
+import InfiniteScroll from "react-infinite-scroll-component";
 
-const ContenedorPeliculas = ({movies}) => {
+const ContenedorPeliculas = ({movies, changePage}) => {
+
   ContenedorPeliculas.propTypes = {
     movies: PropTypes.arrayOf(
       PropTypes.shape({
@@ -11,16 +13,24 @@ const ContenedorPeliculas = ({movies}) => {
         title: PropTypes.string.isRequired,
       }).isRequired,
     ).isRequired,
+    changePage: PropTypes.func.isRequired,
   };
   
   return (
-    <div className='contenedor-peliculas'>
-        {movies.map((movie) => (
-          <Link to={`/pelicula/${movie.id}`} key={movie.id}  >
-            <Pelicula movie={movie} />
-          </Link>
-        ))}
-    </div>
+    <InfiniteScroll 
+      dataLength={movies.length} 
+      hasMore={true} 
+      next={()=> changePage() }
+      loader={<p>Cargando</p>}
+      > 
+      <div className='contenedor-peliculas'>
+          {movies.map((movie) => (
+            <Link to={`/pelicula/${movie.id}`} key={movie.id}  >
+              <Pelicula movie={movie} />
+            </Link>
+          ))}
+      </div>
+    </InfiniteScroll>
   )
 }
 

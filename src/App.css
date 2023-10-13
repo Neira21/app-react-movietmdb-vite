@@ -242,6 +242,10 @@ html{
   text-align: justify;
 }
 
+.hola{
+  /* inline */
+  display: inline-block;
+}
 
 /* .generos-detalle{
 
