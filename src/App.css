@@ -149,6 +149,7 @@ html{
   justify-content: center;
   align-items: center;
   margin-top: 50px;
+  margin: 0 80px
 }
 
 .contenedor-pelicula{
@@ -245,6 +246,11 @@ html{
 .hola{
   /* inline */
   display: inline-block;
+}
+
+.infinite-scroll-container {
+  height: 1000px; /* Establece una altura adecuada */
+  overflow-y: scroll; /* Añade desplazamiento vertical si es necesario */
 }
 
 /* .generos-detalle{

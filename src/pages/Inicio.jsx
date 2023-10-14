@@ -6,6 +6,8 @@ import {getMoviesOrTvByFetch, getCategories} from '../GetMovies'
 import { BiCameraMovie } from 'react-icons/bi'
 import BuscardorPelicula from '../components/BuscardorPelicula'
 
+
+
 const IMG_URL = "https://image.tmdb.org/t/p/w500/"
 
 const Inicio = () => {
@@ -44,6 +46,7 @@ const Inicio = () => {
   return (
     <>
       <div className='app'>
+        
         <div className='title'>
           <h1>Películas TMBD  <BiCameraMovie/> <BiCameraMovie/> <BiCameraMovie/></h1>
           <div>

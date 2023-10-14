@@ -12,7 +12,6 @@ const DetallePelicula = () => {
   const getMovie = async () => {
     const data = await getMovieById(id)
     if(data.success !== false){
-      console.log(' data existe entonces es una pelicula', data)
       setMovie(data)
     }
   }

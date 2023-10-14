@@ -11,7 +11,6 @@ const DetallePelicula = () => {
 
   const getMovie = async () => {
       const data = await getTvById(id)
-      console.log(data)
       setTv(data)
   }
 

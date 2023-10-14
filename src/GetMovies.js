@@ -43,10 +43,10 @@ export async function getMovieByGenre(genre, page){
   const response = await getCategories('/genre/movie/list')
   
   const genreId = response.find(g => g.name === genre).id
-  console.log(genreId)
+  
   //Obtener peliculas por id de genero
   const response2 = await fetch(`${API_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genreId}&page=${page}`)
   const data2 = await response2.json()
-  console.log(data2)
+
   return data2.results
 }

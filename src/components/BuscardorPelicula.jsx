@@ -9,13 +9,13 @@ const BuscardorPelicula = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     if(search === '') return
+    
     history(`/contenedorpelicula/${search}`)
   }
 
   const handleChange = (e) => {
     const value = e.target.value
     setSearch(value)
-    console.log(value)
   }
 
   return (
