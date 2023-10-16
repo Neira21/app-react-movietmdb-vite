@@ -1,45 +1,26 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { Link, useParams } from "react-router-dom"
+import { Link } from "react-router-dom"
 import ContenedorPeliculas from "../components/ContenedorPeliculas"
-import { useEffect } from "react"
-import {getMovieBySearch, getMovieByGenre, getMoviesPopular} from '../GetMovies'
-import { useState } from "react"
+
+import { useLocation } from "react-router-dom"
 import BuscardorPelicula from "../components/BuscardorPelicula"
 
 
 const ContenedorPelicula = () => {
-  const [movies, setMovies] = useState([])
-  const { search, generoname } = useParams()
-
-  const [loading , setLoading] = useState(true)
-
-  const [page, setPage] = useState(1)
-
-  const changePage = async () => {
-    setPage(prevPage => prevPage + 1)
-  }
   
-  const getMovies = async () => {
-    
-    setLoading(true)
-    if(search === undefined && generoname !== undefined){
-      const data = await getMovieByGenre(generoname, page)
-      setMovies(prevMovies => prevMovies.concat(data))
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const search = params.get('search');
 
-    }else if(generoname === undefined && search !== undefined){
-      const data = await getMovieBySearch(search, page)
-      setMovies(prevMovies => prevMovies.concat(data))
-      
-    }else if(generoname === undefined && search === undefined){
-      const data = await getMoviesPopular('/movie/popular', page)
-      setMovies(prevMovies => prevMovies.concat(data))
-    }
-    setLoading(false)
-  }
+  console.log('search', search)
 
-  useEffect(()=>{
-    getMovies()
-  },[search])
+  //obtener el parametro de la url de category
+
+  const category = params.get('category')
+
+  console.log('category', category)
+  
+  
+ 
   
   return (
     <>
@@ -50,7 +31,7 @@ const ContenedorPelicula = () => {
           </div>
       </div>
       <BuscardorPelicula />
-      <ContenedorPeliculas key={search} movies={movies} changePage={changePage} loading={loading} />
+      <ContenedorPeliculas search={search} key={search} category={category} />
       
    </>
   )

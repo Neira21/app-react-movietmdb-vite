@@ -92,7 +92,7 @@ const Inicio = () => {
 
         <div className='contenedor-categoria'>
           {movieCategory.map((category) => (
-            <Link key={category.id} to={`/genero/${category.name}`}>
+            <Link key={category.id} to={`/contenedorpelicula?category=${category.name}`}>
               <div className='categoria-card' key={category.id}>
                 <h3 className='categoria-titulo'>{category.name}</h3>
               </div>

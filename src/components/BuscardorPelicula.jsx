@@ -4,13 +4,14 @@ import { useNavigate } from 'react-router-dom'
 
 const BuscardorPelicula = () => {
   const [search, setSearch] = useState('')
-  const history = useNavigate()
+  const navigate = useNavigate()
   
   const handleSubmit = (e) => {
     e.preventDefault()
     if(search === '') return
     
-    history(`/contenedorpelicula/${search}`)
+    navigate(`/contenedorpelicula?search=${search}`)
+    setSearch('') 
   }
 
   const handleChange = (e) => {

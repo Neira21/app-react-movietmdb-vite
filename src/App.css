@@ -26,7 +26,7 @@ html{
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin: 40px 25px;
+  margin: 40px 0px;
 }
 
 .search{
@@ -191,7 +191,6 @@ html{
   font-size: 50px;
   font-weight: bold;
   text-align: center;
-  
 }
 
 .datos-detalle{
@@ -216,13 +215,18 @@ html{
 
 .tabla-datos{
   margin: 20px 50px;
-  font-size: 50px;
+  font-size: 20px;
   border: 1px solid black;
 }
 
+.tabla-datos p{
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+}
 .tabla-datos td{
   padding: 20px;
-  border: 5px solid black;
+  
 }
 
 
@@ -243,16 +247,20 @@ html{
   text-align: justify;
 }
 
-.hola{
-  /* inline */
-  display: inline-block;
+.spinner-contenedor{
+  display: flex;
+  justify-content: center;
+  
 }
 
-.infinite-scroll-container {
-  height: 1000px; /* Establece una altura adecuada */
-  overflow-y: scroll; /* Añade desplazamiento vertical si es necesario */
+.spinner{
+  margin: 30px;
+  
 }
 
-/* .generos-detalle{
-
-} */
+.generos-detalle{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+} 

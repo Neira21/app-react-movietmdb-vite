@@ -19,18 +19,16 @@ const DetallePelicula = () => {
   useEffect(() => {
     getMovie()
   }, [])
-  
 
   return (
     <div>
       <div className='title'>
-          <h1>Películas TMBD 👽👽👽</h1>
+          <h1>Detalle 👽👽👽</h1>
           <div>
             <Link to={'/'} > Inicio</Link>
             <Link to={'/contenedorpelicula'} >Contenedor Pelicula</Link>
           </div>
         </div>
-     <h1>DetallePelicula</h1>
      <div className='contenedor-pelicula-detalle'>
         <div className='titulo-detalle'>
           <h2>{movie.title}</h2>
@@ -63,11 +61,6 @@ const DetallePelicula = () => {
                   <td>{movie.vote_count}</td>
                 </tr>
               </thead>
-               
-    
-              
-                
-              
               
             </table>
           </div>
@@ -79,34 +72,25 @@ const DetallePelicula = () => {
 
         <div className='generos-detalle'>
           <div>
-            <h3>Generos</h3>
+            <h3>Generos:</h3>
           </div>
-          
             <div className='contenedor-categoria'>
               {movie.genres && movie.genres.map((genero) => {
                 return <div className='categoria-card' key={genero.id}>
-                   <h3>{genero.name}</h3>
+                   <h3 className="categoria-titulo">{genero.name}</h3>
                   </div>
               })}
             </div>
-          
-
         </div>
-
         <div>
           <div>
             Peliculas similares
           </div>
           <div>
-            Lista de películas generales  
+            Lista de películas similares  
           </div>
         </div>
-
      </div>
-      
-      
-      
-     
     </div>
   )
 }

@@ -2,8 +2,8 @@ import CircleLoader from "react-spinners/ClipLoader";
 
 const Spinner = () => {
   return (
-    <div className="hola">
-      <CircleLoader className="spinner" color="#36d7b7" />
+    <div className="spinner-contenedor">
+      <CircleLoader className="spinner" color="#000000" />
     </div>
   )
 }

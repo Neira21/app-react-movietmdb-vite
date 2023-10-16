@@ -10,7 +10,7 @@ export async function getMoviesOrTvByFetch(url){
 export async function getMoviesPopular(url, page){
   const response = await fetch(`${API_URL}${url}?api_key=${API_KEY}&page=${page}`)
   const data = await response.json()
-  return data.results
+  return data
 }
 
 
@@ -35,7 +35,7 @@ export async function getTvById(id){
 export async function getMovieBySearch(query, page){
   const response = await fetch(`${API_URL}/search/movie?api_key=${API_KEY}&query=${query}&page=${page}`)
   const data = await response.json()
-  return data.results
+  return data
 }
 
 export async function getMovieByGenre(genre, page){
@@ -48,5 +48,5 @@ export async function getMovieByGenre(genre, page){
   const response2 = await fetch(`${API_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genreId}&page=${page}`)
   const data2 = await response2.json()
 
-  return data2.results
+  return data2
 }
